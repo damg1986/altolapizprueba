@@ -1,0 +1,6 @@
+<publishData><publishProfile profileName="AltoLapizService - Web Deploy" publishMethod="MSDeploy" 
+publishUrl="altolapizservice.scm.azurewebsites.net:443"
+ msdeploySite="AltoLapizService" userName="$AltoLapizService" 
+userPWD="478ZfkihQeedY049PpprqnsJGTdcJ8BlHh6gbAEvytBRHpwHi5uiAbfjRp9f"
+ destinationAppUrl="http://altolapizservice.azurewebsites.net" SQLServerDBConnectionString="" 
+mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile><publishProfile profileName="AltoLapizService - FTP" publishMethod="FTP" publishUrl="ftp://waws-prod-db3-095.ftp.azurewebsites.windows.net/site/wwwroot" ftpPassiveMode="True" userName="AltoLapizService\$AltoLapizService" userPWD="478ZfkihQeedY049PpprqnsJGTdcJ8BlHh6gbAEvytBRHpwHi5uiAbfjRp9f" destinationAppUrl="http://altolapizservice.azurewebsites.net" SQLServerDBConnectionString="" mySQLDBConnectionString="" hostingProviderForumLink="" controlPanelLink="http://windows.azure.com" webSystem="WebSites"><databases /></publishProfile></publishData>

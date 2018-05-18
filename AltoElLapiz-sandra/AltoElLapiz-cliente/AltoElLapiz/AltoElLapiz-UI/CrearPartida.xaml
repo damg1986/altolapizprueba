@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="AltoElLapiz_UI.CrearPartida"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AltoElLapiz_UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+        <TextBlock Name="txtNombreGrupo" Text="Nombre : "></TextBlock>
+        <TextBox Name="txtboxNombre" RelativePanel.RightOf="txtNombreGrupo"></TextBox>
+        <Button Name="boton" Click="btnJoin_Click" RelativePanel.Below="txtboxNombre"> Agregar</Button>
+        <Button Name="atras" Click="atras_Click" RelativePanel.Below="boton">Atras</Button>
+
+    </RelativePanel>
+</Page>
