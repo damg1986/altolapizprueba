@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="AltoElLapizUI.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AltoElLapizUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+   
+    <RelativePanel Background="#2B9CF5">
+        <TextBlock x:Name="textoCrear" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Uid="TextBlockCrearPartida" Grid.Row="0" TextAlignment="Center" Foreground="White" FontSize="70" Margin="0 10 0 0"></TextBlock>
+
+        <TextBlock x:Name="textNombrePartida" x:Uid="TextBlockNombrePartida"  RelativePanel.AlignLeftWithPanel="True" Foreground="White" FontSize="30" Margin="250 130 0 0">game name:</TextBlock>
+        <TextBox x:Name="boxNombrePartida" Height="40" Width="300" Margin="10 130 0 0" RelativePanel.RightOf="textNombrePartida" RelativePanel.AlignTopWith="textNombrePartida" Text="{Binding nombrePartida, Mode=TwoWay}"></TextBox>
+
+        <!--Grid con las categorias-->
+        <Rectangle x:Name="rectangulo" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textoCrear" Grid.Row="0" RadiusX="20" RadiusY="20" Width="800" Height="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 100 0 0" Fill="AntiqueWhite"></Rectangle>
+        <TextBlock x:Uid="TextBlockCategorias" RelativePanel.AlignTopWith="rectangulo" RelativePanel.AlignHorizontalCenterWith="rectangulo" TextAlignment="Center" FontSize="30" Margin="0 100 0 0"></TextBlock>
+
+        <!--Grid con las categorias a elegir (voy a poner 16)-->
+        <Grid HorizontalAlignment="Center" Width="800" Height="300" Margin="0 160 0 0" RelativePanel.AlignTopWith="rectangulo" RelativePanel.AlignRightWith="rectangulo">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ToggleSwitch x:Name="toggle1" x:Uid="ToggleNombre" Header="" Grid.Row="0" Grid.Column="0" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle2" x:Uid="ToggleApellido" Grid.Row="0" Grid.Column="1" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle3" x:Uid="ToggleLugar" Grid.Row="0" Grid.Column="2" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle4" x:Uid="ToggleDeporte" Grid.Row="0" Grid.Column="3" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle5" x:Uid="ToggleColor" Grid.Row="1" Grid.Column="0" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle5, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle6" x:Uid="ToggleComida" Grid.Row="1" Grid.Column="1" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle6, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle7" x:Uid="ToggleProfesion" Grid.Row="1" Grid.Column="2" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle7, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle8" x:Uid="ToggleAnimal" Grid.Row="1" Grid.Column="3" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle8, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle9" x:Uid="ToggleMarca" Grid.Row="2" Grid.Column="0" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle9, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle10" x:Uid="TogglePartesCuerpo" Grid.Row="2" Grid.Column="1" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle10, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle11" x:Uid="ToggleFlores" Grid.Row="2" Grid.Column="2" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle11, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle12" x:Uid="ToggleDeportista" Grid.Row="2" Grid.Column="3" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle12, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle13" x:Uid="ToggleAnime" Grid.Row="3" Grid.Column="0" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle13, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle14" x:Uid="ToggleActor" Grid.Row="3" Grid.Column="1" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle14, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle15" x:Uid="ToggleLibro" Grid.Row="3" Grid.Column="2" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <ToggleSwitch x:Name="toggle16" x:Uid="ToggleCantante" Grid.Row="3" Grid.Column="3" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle16, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <TextBlock x:Name="textRondas" x:Uid="TextBlockRondas" Foreground="White" FontSize="30" RelativePanel.Below="rectangulo" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <ComboBox x:Name="boxRondas" Margin="10 5 0 0" RelativePanel.AlignTopWith="textRondas" RelativePanel.RightOf="textRondas" ItemsSource="{Binding rondas}" SelectedItem="{Binding rondasSeleccionadas, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock x:Name="textIdioma" RelativePanel.AlignRightWith="textRondas" x:Uid="TextBlockIdioma" Foreground="White" FontSize="30" Grid.Column="1" RelativePanel.Below="textRondas"></TextBlock>
+        <ComboBox x:Name="boxIdioma" Margin="10 5 0 0" RelativePanel.RightOf="textIdioma" RelativePanel.AlignTopWith="textIdioma"></ComboBox>
+
+        <Button x:Uid="ButtonCrear" Background="White" HorizontalAlignment="Center" Grid.Row="2" FontSize="30" Margin="0 0 0 20" Height="50" Width="350" Command="{Binding crearPartidaCommand}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" IsEnabled="{Binding botonCrearHabilitado, UpdateSourceTrigger=PropertyChanged}"></Button>
+
+        <TextBlock x:Name="Intocable" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Visibility="{Binding bloqueaFondo}" ></TextBlock>
+
+        <Popup  x:Name="PopupSalaEspera" IsOpen="{Binding visibilidadPopUp, Mode=TwoWay}" VerticalOffset="250"  HorizontalOffset="550">
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="White"
+                BorderThickness="2" Width="300" Height="200"
+                CornerRadius="5">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock x:Name="UnirseNombre" x:Uid="UnirseNombre" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="nombre" Text="{Binding admin.nick, Mode=TwoWay}" MaxLength="20"></TextBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="btnJugar" x:Uid="UnirseBotonJugar" Command="{Binding unirsePartidaCommand}" Margin="0 5 0 0"></Button>
+                        <Button x:Name="btnCerrar" x:Uid="UnirseBotonCerrar" Command="{Binding cerrarCommand}" Margin="10 5 0 0"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+    </RelativePanel>
+</Page>
