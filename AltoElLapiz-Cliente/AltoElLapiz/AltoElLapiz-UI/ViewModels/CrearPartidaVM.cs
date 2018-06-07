@@ -3,6 +3,7 @@ using AltoElLapiz_Entidades;
 using Microsoft.AspNet.SignalR.Client;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,11 @@ namespace AltoElLapiz_UI.ViewModels
         public int[] _rondas = { 3, 4, 5, 6, 7, 8, 9, 10 };
         private bool _botonCrearHabilitado = false;
         private bool _toggle1, _toggle2, _toggle3, _toggle4, _toggle5, _toggle6, _toggle7, _toggle8, _toggle9, _toggle10, _toggle11, _toggle12, _toggle13, _toggle14, _toggle15, _toggle16;
+
+        private string[] _idiomas = { "Deutsch", "English", "Español", "Français", "Hindi", "Chinese", "Japanese", "Italian", "Português" };
+        private string _idiomaSeleccionado;
+        private ObservableCollection<clsCategoria> _categoriasSeleccionadas;
+        private ObservableCollection<clsCategoria> _categorias;
 
         private clsUsuario _admin;
         private bool _visibilidadPopUp = false;
@@ -46,7 +52,25 @@ namespace AltoElLapiz_UI.ViewModels
         {
             admin = new clsUsuario();
             admin.admin = true;
-          
+
+            _categorias = new ObservableCollection<clsCategoria>();
+            _categoriasSeleccionadas = new ObservableCollection<clsCategoria>();
+            _categorias.Add(new clsCategoria("Nombre"));
+            _categorias.Add(new clsCategoria("Apellido"));
+            _categorias.Add(new clsCategoria("Lugar"));
+            _categorias.Add(new clsCategoria("Deporte"));
+            _categorias.Add(new clsCategoria("Color"));
+            _categorias.Add(new clsCategoria("Comida"));
+            _categorias.Add(new clsCategoria("Profesión"));
+            _categorias.Add(new clsCategoria("Animal"));
+            _categorias.Add(new clsCategoria("Marca"));
+            _categorias.Add(new clsCategoria("Parte del cuerpo"));
+            _categorias.Add(new clsCategoria("Flor"));
+            _categorias.Add(new clsCategoria("Deportista"));
+            _categorias.Add(new clsCategoria("Anime"));
+            _categorias.Add(new clsCategoria("Actor"));
+            _categorias.Add(new clsCategoria("Libro"));
+            _categorias.Add(new clsCategoria("Cantante"));
         }
         #endregion
 
@@ -74,6 +98,40 @@ namespace AltoElLapiz_UI.ViewModels
                 NotifyPropertyChanged("rondasSeleccionadas");
             }
         }
+
+        public string idiomaSeleccionado
+        {
+            get
+            {
+                return _idiomaSeleccionado;
+            }
+            set
+            {
+                _idiomaSeleccionado = value;
+                NotifyPropertyChanged("idiomaSeleccionado");
+            }
+        }
+
+        public ObservableCollection<clsCategoria> categoriasSeleccionadas
+        {
+            get
+            {
+                return _categoriasSeleccionadas;
+            }
+            set
+            {
+                _categoriasSeleccionadas = value;
+            }
+        }
+
+        public string[] idiomas
+        {
+            get
+            {
+                return _idiomas;
+            }
+        }
+
         public bool botonCrearHabilitado
         {
             get
@@ -131,6 +189,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle1 = value;
+                if (_toggle1)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[0]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[0]);
+                }
                 comprobarToggledButtons(_toggle1);
                 NotifyPropertyChanged("toggle1");
             }
@@ -144,6 +210,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle2 = value;
+                if (_toggle2)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[1]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[1]);
+                }
                 comprobarToggledButtons(_toggle2);
                 NotifyPropertyChanged("toggle2");
             }
@@ -157,6 +231,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle3 = value;
+                if (_toggle3)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[2]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[2]);
+                }
                 comprobarToggledButtons(_toggle3);
                 NotifyPropertyChanged("toggle3");
             }
@@ -170,6 +252,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle4 = value;
+                if (_toggle4)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[3]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[3]);
+                }
                 comprobarToggledButtons(_toggle4);
                 NotifyPropertyChanged("toggle4");
             }
@@ -183,6 +273,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle5 = value;
+                if (_toggle5)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[4]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[4]);
+                }
                 comprobarToggledButtons(_toggle5);
                 NotifyPropertyChanged("toggle5");
             }
@@ -196,6 +294,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle6 = value;
+                if (_toggle6)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[5]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[5]);
+                }
                 comprobarToggledButtons(_toggle6);
                 NotifyPropertyChanged("toggle6");
             }
@@ -209,6 +315,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle7 = value;
+                if (_toggle7)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[6]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[6]);
+                }
                 comprobarToggledButtons(_toggle7);
                 NotifyPropertyChanged("toggle7");
             }
@@ -222,6 +336,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle8 = value;
+                if (_toggle8)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[7]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[7]);
+                }
                 comprobarToggledButtons(_toggle8);
                 NotifyPropertyChanged("toggle8");
             }
@@ -235,6 +357,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle9 = value;
+                if (_toggle9)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[8]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[8]);
+                }
                 comprobarToggledButtons(_toggle9);
                 NotifyPropertyChanged("toggle9");
             }
@@ -248,6 +378,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle10 = value;
+                if (_toggle10)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[9]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[9]);
+                }
                 comprobarToggledButtons(_toggle10);
                 NotifyPropertyChanged("toggle10");
             }
@@ -261,6 +399,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle11 = value;
+                if (_toggle11)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[10]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[10]);
+                }
                 comprobarToggledButtons(_toggle11);
                 NotifyPropertyChanged("toggle11");
             }
@@ -274,6 +420,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle12 = value;
+                if (_toggle12)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[11]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[11]);
+                }
                 comprobarToggledButtons(_toggle12);
                 NotifyPropertyChanged("toggle12");
             }
@@ -287,6 +441,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle13 = value;
+                if (_toggle13)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[12]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[12]);
+                }
                 comprobarToggledButtons(_toggle13);
                 NotifyPropertyChanged("toggle13");
             }
@@ -300,6 +462,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle14 = value;
+                if (_toggle14)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[13]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[13]);
+                }
                 comprobarToggledButtons(_toggle14);
                 NotifyPropertyChanged("toggle14");
             }
@@ -313,6 +483,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle15 = value;
+                if (_toggle15)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[14]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[14]);
+                }
                 comprobarToggledButtons(_toggle15);
                 NotifyPropertyChanged("toggle15");
             }
@@ -326,6 +504,14 @@ namespace AltoElLapiz_UI.ViewModels
             set
             {
                 _toggle16 = value;
+                if (_toggle16)
+                {
+                    _categoriasSeleccionadas.Add(_categorias[15]);
+                }
+                else
+                {
+                    _categoriasSeleccionadas.Remove(_categorias[15]);
+                }
                 comprobarToggledButtons(_toggle16);
                 NotifyPropertyChanged("toggle16");
             }
@@ -481,6 +667,7 @@ namespace AltoElLapiz_UI.ViewModels
             grupo.nombrePartida = nombrePartida;
             grupo.estadoAbierto = true;
             grupo.numeroRondas = rondasSeleccionadas;
+            grupo.listadoDeCategorias = categoriasSeleccionadas;
             // grupo.pais = (String)boxIdioma.SelectedValue;
 
 
@@ -492,6 +679,7 @@ namespace AltoElLapiz_UI.ViewModels
 
             //asigmanos el nombre de la partida en el VMListado
             App.listaJugadoresVM.nombrePartida = nombrePartida;
+            App.listaJugadoresVM.usuario = admin;
 
             Frame frameActual = (Frame)Window.Current.Content;
             frameActual.Navigate(typeof(AltoElLapizUI.ListaJugadores)/*, nombrePartida*/);

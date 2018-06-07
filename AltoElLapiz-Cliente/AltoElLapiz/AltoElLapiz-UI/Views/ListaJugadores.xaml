@@ -13,6 +13,10 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <TextBlock x:Uid="TextBlockJugadores" Grid.Row="0" TextAlignment="Center" Foreground="White" FontSize="70" Margin="0 10 0 0"></TextBlock>
         
         <!--Lista de jugadores-->
@@ -29,6 +33,14 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Uid="ButtonJugar" Background="White" HorizontalAlignment="Center" Grid.Row="2" FontSize="50" Margin="0 0 0 20" Height="90" Width="350" Click="Button_Click"></Button>
+        <TextBlock x:Uid="ListaJugadoresTextoEspera" Opacity="{Binding opacidadTextoEspera}" HorizontalAlignment="Center" Grid.Row="2" FontSize="15" Margin="0 0 0 20" Height="90" Width="350" Foreground="White" FontWeight="ExtraBold"></TextBlock>
+        <Button x:Uid="ButtonJugar" Opacity="{Binding opacidadBtnJugar}" Background="White" HorizontalAlignment="Center" Grid.Row="2" FontSize="50" Margin="0 0 0 20" Height="90" Width="350" Command="{Binding jugar}"></Button>
+
+       
+        <!--Contenedor Chat-->
+        <Frame x:Name="contenedorChat" Grid.Column="1" Grid.RowSpan="3" MaxWidth="400">
+
+        </Frame>
+
     </Grid>
 </Page>

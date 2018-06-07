@@ -17,16 +17,6 @@ namespace AltoLapizService.Hubs
         public static ObservableCollection<clsGrupo> listadoDeGrupos = new ObservableCollection<clsGrupo>();      
         //public static int jugadoresUnidosAUnGrupo = 1;
 
-        /// <summary>
-        /// add connection to group
-        /// </summary>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
-        //public Task JoinGroup(string groupName,clsUsuario usuario)
-        //{
-        //    agregarUsuario(groupName,usuario);           
-        //    return Groups.Add(Context.ConnectionId, groupName);
-       // }
 	   
 	   //metodos para VM crear partida
 
@@ -98,7 +88,23 @@ namespace AltoLapizService.Hubs
             Clients.Caller.RellenaListadoJugadores(listadoJugadores);
         }
 
-
+        /// <summary>
+        /// metodo que elimina la partida del observableCollections(NO ELIMINA EL GRUPO DEL SERVIDOR) y le dice a 
+        /// todos los clientes que elimine esa partida de su listado
+        /// </summary>
+        /// <param name="nombrePartida"></param>
+        public void QuitarPartida(String nombrePartida) {
+            bool encontrado = false;
+            for (int i = 0; i < listadoDeGrupos.Count && encontrado == false; i++)
+            {
+                if (listadoDeGrupos.ElementAt(i).nombrePartida.Equals(nombrePartida))
+                {
+                    listadoDeGrupos.RemoveAt(i);
+                    encontrado = true;
+                }
+            }
+            Clients.All.EliminaPartida(nombrePartida);
+        }
        
 
         //crear un metodo para eliminar de la lista los grupos que esten completos
@@ -114,12 +120,6 @@ namespace AltoLapizService.Hubs
 
 
 
-
-
-        //public void Send(ChatMessage message)
-        //{
-        //    Clients.All.broadcastMessage(message);
-        //}
 
     }
 }

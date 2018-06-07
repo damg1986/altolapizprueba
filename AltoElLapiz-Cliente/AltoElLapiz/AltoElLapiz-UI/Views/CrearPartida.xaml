@@ -54,7 +54,7 @@
         <ComboBox x:Name="boxRondas" Margin="10 5 0 0" RelativePanel.AlignTopWith="textRondas" RelativePanel.RightOf="textRondas" ItemsSource="{Binding rondas}" SelectedItem="{Binding rondasSeleccionadas, Mode=TwoWay}">
         </ComboBox>
         <TextBlock x:Name="textIdioma" RelativePanel.AlignRightWith="textRondas" x:Uid="TextBlockIdioma" Foreground="White" FontSize="30" Grid.Column="1" RelativePanel.Below="textRondas"></TextBlock>
-        <ComboBox x:Name="boxIdioma" Margin="10 5 0 0" RelativePanel.RightOf="textIdioma" RelativePanel.AlignTopWith="textIdioma"></ComboBox>
+        <ComboBox x:Name="boxIdioma" Margin="10 5 0 0" RelativePanel.RightOf="textIdioma" RelativePanel.AlignTopWith="textIdioma" ItemsSource="{Binding idiomas}" SelectedItem="{Binding idiomaSeleccionado, Mode=TwoWay}"></ComboBox>
 
         <Button x:Uid="ButtonCrear" Background="White" HorizontalAlignment="Center" Grid.Row="2" FontSize="30" Margin="0 0 0 20" Height="50" Width="350" Command="{Binding crearPartidaCommand}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" IsEnabled="{Binding botonCrearHabilitado, UpdateSourceTrigger=PropertyChanged}"></Button>
 
@@ -69,7 +69,7 @@
                     <TextBlock x:Name="UnirseNombre" x:Uid="UnirseNombre" HorizontalAlignment="Center"/>
                     <TextBox x:Name="nombre" Text="{Binding admin.nick, Mode=TwoWay}" MaxLength="20"></TextBox>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:Name="btnJugar" x:Uid="UnirseBotonJugar" Command="{Binding unirsePartidaCommand}" Margin="0 5 0 0"></Button>
+                        <Button x:Name="btnJugar" x:Uid="ButtonCrear" Command="{Binding unirsePartidaCommand}" Margin="0 5 0 0"></Button>
                         <Button x:Name="btnCerrar" x:Uid="UnirseBotonCerrar" Command="{Binding cerrarCommand}" Margin="10 5 0 0"></Button>
                     </StackPanel>
                 </StackPanel>

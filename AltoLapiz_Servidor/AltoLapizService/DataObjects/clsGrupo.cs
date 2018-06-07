@@ -14,13 +14,16 @@ namespace AltoLapizService.DataObjects
         public bool estadoAbierto { get; set; }
         public ObservableCollection<clsUsuario> listadoDeUsuario { get; set; }
 
+        public ObservableCollection<clsCategoria> listadoDeCategorias { get; set; }
+
         //Constructor por parametros
-        public clsGrupo(int numeroRondas, string pais, string nombrePartida , int numeroParticipantes, bool estadoAbierto, ObservableCollection<clsUsuario> listadoDeUsuario)
-        :base(numeroRondas, pais, nombrePartida)
+        public clsGrupo(int numeroRondas, string pais, string nombrePartida, int numeroParticipantes, bool estadoAbierto, ObservableCollection<clsUsuario> listadoDeUsuario, ObservableCollection<clsCategoria> listadoDeCategoria)
+        : base(numeroRondas, pais, nombrePartida)
         {
             this.numeroParticipantes = numeroParticipantes;
             this.estadoAbierto = estadoAbierto;
             this.listadoDeUsuario = listadoDeUsuario;
+            this.listadoDeCategorias = listadoDeCategoria;
         }
 
 
@@ -31,6 +34,7 @@ namespace AltoLapizService.DataObjects
             this.numeroParticipantes = 0;
             this.estadoAbierto = true;
             this.listadoDeUsuario = new ObservableCollection<clsUsuario>();
+            this.listadoDeCategorias = new ObservableCollection<clsCategoria>();
 
         }
 

@@ -108,7 +108,9 @@
     <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\ListaJugadoresVM.cs" />
     <Compile Include="ViewModels\MainPageVM.cs" />
+    <Compile Include="ViewModels\PantallaJuegoVM.cs" />
     <Compile Include="ViewModels\UnirseVM.cs" />
+    <Compile Include="ViewModels\ValidarRespuestasVM.cs" />
     <Compile Include="Views\CrearPartida.xaml.cs">
       <DependentUpon>CrearPartida.xaml</DependentUpon>
     </Compile>

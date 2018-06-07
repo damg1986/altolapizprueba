@@ -34,7 +34,8 @@ namespace AltoElLapiz_UI.ViewModels
         public HubConnection conn { get; set; }
         public IHubProxy proxyPartidaUnirse1 { get; set; }
         public IHubProxy proxyPartidaUnirse2{ get; set; }
-        
+        public IHubProxy proxyPartidaUnirse3 { get; set; }
+
         clsMyConnection conexion = new clsMyConnection();
         #endregion
 
@@ -216,6 +217,8 @@ namespace AltoElLapiz_UI.ViewModels
 
         private void UnirsePartidaCommand()
         {
+            visibilidadPopUp = false;
+            bloqueaFondo = false;
             clsUsuario usuario = new clsUsuario();
             usuario.nick = nombre;
 
@@ -224,8 +227,23 @@ namespace AltoElLapiz_UI.ViewModels
 
             App.listaJugadoresVM.nombrePartida = partidaSeleccionada.nombrePartida;
 
-            Frame frameActual = (Frame)Window.Current.Content;
-            frameActual.Navigate(typeof(AltoElLapizUI.ListaJugadores));
+            if (App.listaJugadoresVM.listadoUsuariosPartida.Count <= 6)
+            {
+                App.listaJugadoresVM.usuario = usuario;
+                Frame frameActual = (Frame)Window.Current.Content;
+                frameActual.Navigate(typeof(AltoElLapizUI.ListaJugadores));
+
+                if (App.listaJugadoresVM.listadoUsuariosPartida.Count == 6) {
+                    CerrarPartida();
+                }
+            }
+            else { visibilidadPopUp = false; }
+            
+
+            //Frame frameActual = (Frame)Window.Current.Content;
+            //frameActual.Navigate(typeof(AltoElLapizUI.ListaJugadores));
+
+
         }
 
         private void CerrarCommand()
@@ -241,9 +259,11 @@ namespace AltoElLapiz_UI.ViewModels
             conn = new HubConnection(conexion.miUrl);
             proxyPartidaUnirse1 = conn.CreateHubProxy("PartidaHub");
             proxyPartidaUnirse2 = conn.CreateHubProxy("PartidaHub");
+            proxyPartidaUnirse3 = conn.CreateHubProxy("PartidaHub");
             conn.Start();
             proxyPartidaUnirse1.On<ObservableCollection<clsGrupo>>("CargarListasDeGrupos", OnRellenarPartidasDeInicio);
             proxyPartidaUnirse2.On<clsUsuario>("MandaUsuario", OnNombreUsuario);
+            proxyPartidaUnirse3.On<String>("EliminaPartida", OnEliminaPartida);
         }
 
         public void BroadcastRellenarPartidasDeInicio()
@@ -294,6 +314,36 @@ namespace AltoElLapiz_UI.ViewModels
 
             });
         }
+
+        /// <summary>
+        /// va a invocar a QuitarPartida del servidor que eliminara la aprtida del observablecollections de grupos
+        /// </summary>
+        public void CerrarPartida()
+        {
+            proxyPartidaUnirse3.Invoke("QuitarPartida", partidaSeleccionada.nombrePartida);
+
+        }
+
+        private async void OnEliminaPartida(String nombrePartida)
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                bool encontrado = false;
+                for (int i = 0; i < listadoCompletoPartidas.Count && encontrado == false; i++)
+                {
+                    if (listadoCompletoPartidas.ElementAt(i).nombrePartida.Equals(nombrePartida))
+                    {
+                        listadoCompletoPartidas.RemoveAt(i);
+                        encontrado = true;
+                    }
+                }
+
+
+            });
+        }
+
+
+
 
     }
 }

@@ -228,4 +228,7 @@
   <data name="UnirseBotonCerrar.Content" xml:space="preserve">
     <value>Cerrar</value>
   </data>
+  <data name="ListaJugadoresTextoEspera.Text" xml:space="preserve">
+    <value>Esperando a que el admin empiece la partida</value>
+  </data>
 </root>

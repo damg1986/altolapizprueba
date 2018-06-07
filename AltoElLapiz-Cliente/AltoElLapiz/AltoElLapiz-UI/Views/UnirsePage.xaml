@@ -19,7 +19,7 @@
             <TextBlock x:Name="HeaderIdioma" x:Uid="HeaderIdioma" RelativePanel.RightOf="HeaderRondas" Foreground="White" Margin="147 0 0 0"></TextBlock>
         </RelativePanel>
 
-        <ListView x:Name="listViewPartidas" SelectedItem="{Binding partidaSeleccionada, Mode=TwoWay}" ItemsSource="{Binding listViewPartidas}" Width="1000" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Below="relativeHeaders" Background="#3899DF">
+        <ListView x:Name="listViewPartidas" SelectedItem="{Binding partidaSeleccionada, Mode=TwoWay}" ItemsSource="{Binding listadoCompletoPartidas}" Width="1000" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.Below="relativeHeaders" Background="#3899DF">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <RelativePanel>
@@ -32,7 +32,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <TextBlock x:Name="Intocable" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Visibility="{Binding bloqueaFondo}" ></TextBlock>
-        <Popup  x:Name="PopupSalaEspera" IsOpen="{Binding visibilidadPopUp, Mode=TwoWay}" VerticalOffset="250"  HorizontalOffset="550">
+        <Popup  x:Name="PopupSalaEspera" IsOpen="{Binding visibilidadPopUp}" VerticalOffset="250"  HorizontalOffset="550">
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="White"
                 BorderThickness="2" Width="300" Height="200"

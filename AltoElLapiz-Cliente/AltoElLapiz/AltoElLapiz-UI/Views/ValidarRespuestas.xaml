@@ -9,10 +9,10 @@
 
     <RelativePanel Background="#2B9CF5">
         <TextBlock x:Name="nombreUsuario" Text="{Binding nombreUsuario}" RelativePanel.AlignLeftWithPanel="True"></TextBlock>
-        <TextBlock x:Name="palabraHeader" x:Uid="ValidarRespuestasPalabra"></TextBlock>
-        <TextBlock x:Name="categoriaHeader" x:Uid="ValidarRespuestasCategoria"></TextBlock>
+        <TextBlock x:Name="palabraHeader" x:Uid="ValidarRespuestasPalabra" RelativePanel.Below="nombreUsuario"></TextBlock>
+        <TextBlock x:Name="categoriaHeader" x:Uid="ValidarRespuestasCategoria" RelativePanel.Below="palabraHeader"></TextBlock>
         <!--Los checkboxes se generarán de forma dinámica, falta incluir chat-->
-        
+
         <!--Contenedor Chat-->
         <Frame x:Name="contenedorChat" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" MaxWidth="400">
 

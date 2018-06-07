@@ -1,4 +1,5 @@
 ﻿using AltoElLapiz_UI;
+using ChatNervion;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,7 +34,7 @@ namespace AltoElLapizUI
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-          
+            contenedorChat.Navigate(typeof(ChatRoom));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
