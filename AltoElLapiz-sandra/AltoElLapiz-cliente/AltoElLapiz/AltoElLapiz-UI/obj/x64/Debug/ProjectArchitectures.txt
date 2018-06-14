@@ -1,1 +1,0 @@
-F:\Diego\2 DAM\GitHub\altolapizprueba\AltoElLapiz-sandra\AltoElLapiz-cliente\AltoElLapiz\AltoElLapiz-UI\AltoElLapiz-UI.csproj;x64

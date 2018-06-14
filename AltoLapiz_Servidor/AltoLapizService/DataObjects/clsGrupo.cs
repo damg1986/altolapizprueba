@@ -14,6 +14,8 @@ namespace AltoLapizService.DataObjects
         public bool estadoAbierto { get; set; }
         public ObservableCollection<clsUsuario> listadoDeUsuario { get; set; }
 
+        public string pais { get; set; }
+
         public ObservableCollection<clsCategoria> listadoDeCategorias { get; set; }
 
         //Constructor por parametros
@@ -24,6 +26,7 @@ namespace AltoLapizService.DataObjects
             this.estadoAbierto = estadoAbierto;
             this.listadoDeUsuario = listadoDeUsuario;
             this.listadoDeCategorias = listadoDeCategoria;
+            this.pais = pais;
         }
 
 
@@ -35,6 +38,7 @@ namespace AltoLapizService.DataObjects
             this.estadoAbierto = true;
             this.listadoDeUsuario = new ObservableCollection<clsUsuario>();
             this.listadoDeCategorias = new ObservableCollection<clsCategoria>();
+            this.pais = "";
 
         }
 

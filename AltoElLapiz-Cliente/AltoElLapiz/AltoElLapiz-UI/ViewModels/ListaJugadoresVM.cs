@@ -18,7 +18,7 @@ namespace AltoElLapiz_UI.ViewModels
     public class ListaJugadoresVM : clsVMBase
     {
         #region Atributos
-        private String _nombrePartida;
+        private clsGrupo _partida;
         private ObservableCollection<clsUsuario> _listadoUsuariosPartida;
 
         private int _opacidadBtnJugar;
@@ -57,9 +57,9 @@ namespace AltoElLapiz_UI.ViewModels
             }
         }
 
-        public String nombrePartida {
-            get { return _nombrePartida; }
-            set { _nombrePartida = value; }
+        public clsGrupo partida {
+            get { return _partida; }
+            set { _partida = value; }
         }
 
         
@@ -129,6 +129,7 @@ namespace AltoElLapiz_UI.ViewModels
         private void pulsarJugar()
         {
             CerrarPartida();
+            
         }
 
         
@@ -160,8 +161,10 @@ namespace AltoElLapiz_UI.ViewModels
         /// </summary>
         public void RellenarJugadoresDeInicio()
         {
-            proxyPartidaListaJugadores.Invoke("MandarListadoJugadores", nombrePartida);
-
+            if (conn.State == ConnectionState.Connected)
+            {
+                proxyPartidaListaJugadores.Invoke("MandarListadoJugadores", partida.nombrePartida);
+            }
         }
 
         /// <summary>
@@ -169,8 +172,10 @@ namespace AltoElLapiz_UI.ViewModels
         /// </summary>
         public void CerrarPartida()
         {
-            proxyPartidaListaJugadores2.Invoke("QuitarPartida", nombrePartida);
-
+            if (conn.State == ConnectionState.Connected)
+            {
+                proxyPartidaListaJugadores2.Invoke("QuitarPartida", partida.nombrePartida);
+            }
         }
 
         private async void OnEliminaPartida(String nombrePartida)
@@ -186,9 +191,21 @@ namespace AltoElLapiz_UI.ViewModels
                         encontrado = true;
                     }
                 }
-               
 
+                App.pantallaJuegoVM.partida = partida;
+                navegar();
+                
             });
+
+          
+        }
+
+        /// <summary>
+        /// navega a la pantalla del juego
+        /// </summary>
+        private void navegar() {
+            Frame frameActual = (Frame)Window.Current.Content;
+            frameActual.Navigate(typeof(AltoElLapizUI.PantallaJuego));
         }
 
         #endregion

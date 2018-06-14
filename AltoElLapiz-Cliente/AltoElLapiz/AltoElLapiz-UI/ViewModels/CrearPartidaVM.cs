@@ -627,8 +627,10 @@ namespace AltoElLapiz_UI.ViewModels
         /// <param name="nuevaPartida"></param>
         public void Broadcast(clsGrupo nuevaPartida)
         {
-
-            proxyPartidaCrear.Invoke("EnviarPartida", nuevaPartida, admin);
+            if (conn.State == ConnectionState.Connected)
+            {
+                proxyPartidaCrear.Invoke("EnviarPartida", nuevaPartida, admin);
+            }
         }
 
         /// <summary>
@@ -668,7 +670,7 @@ namespace AltoElLapiz_UI.ViewModels
             grupo.estadoAbierto = true;
             grupo.numeroRondas = rondasSeleccionadas;
             grupo.listadoDeCategorias = categoriasSeleccionadas;
-            // grupo.pais = (String)boxIdioma.SelectedValue;
+            grupo.pais = "../Assets/Images/Banderas/" + idiomaSeleccionado + ".png";
 
 
             Broadcast(grupo);
@@ -678,8 +680,13 @@ namespace AltoElLapiz_UI.ViewModels
             bloqueaFondo = false;
 
             //asigmanos el nombre de la partida en el VMListado
-            App.listaJugadoresVM.nombrePartida = nombrePartida;
+            App.listaJugadoresVM.partida = grupo;
             App.listaJugadoresVM.usuario = admin;
+
+            App.chatVM.mensaje.nombreGrupo = nombrePartida;
+            App.chatVM.mensaje.nick = admin.nick;
+            App.chatVM.Conectar();
+            App.chatVM.Messages.Clear();
 
             Frame frameActual = (Frame)Window.Current.Content;
             frameActual.Navigate(typeof(AltoElLapizUI.ListaJugadores)/*, nombrePartida*/);
@@ -694,8 +701,10 @@ namespace AltoElLapiz_UI.ViewModels
         }
 
         private void RellenaJugadores(String nombrePartida) {
-
-            proxyPartidaCrear.Invoke("MandarListadoJugadores", nombrePartida);
+            if (conn.State == ConnectionState.Connected)
+            {
+                proxyPartidaCrear.Invoke("MandarListadoJugadores", nombrePartida);
+            }
         }
     }
 }

@@ -99,10 +99,7 @@
       <DependentUpon>ChatRoom.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChatNervion_Windows_CS\DataModel\TodoItem.cs" />
-    <Compile Include="ChatNervion_Windows_CS\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ChatNervion_Windows_CS\ViewModels\MainPageVM.cs" />
+    <Compile Include="ChatNervion_Windows_CS\ViewModels\ChatVM.cs" />
     <Compile Include="ViewModels\clsVMBase.cs" />
     <Compile Include="ViewModels\CrearPartidaVM.cs" />
     <Compile Include="ViewModels\DelegateCommand.cs" />
@@ -143,6 +140,16 @@
     <PRIResource Include="Strings\es-ES\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\Banderas\Chinese.png" />
+    <Content Include="Assets\Images\Banderas\Deutsch.png" />
+    <Content Include="Assets\Images\Banderas\English.png" />
+    <Content Include="Assets\Images\Banderas\Español.png" />
+    <Content Include="Assets\Images\Banderas\Français.png" />
+    <Content Include="Assets\Images\Banderas\Hindi.png" />
+    <Content Include="Assets\Images\Banderas\Italian.png" />
+    <Content Include="Assets\Images\Banderas\Japanese.png" />
+    <Content Include="Assets\Images\Banderas\Português.png" />
+    <Content Include="Assets\Images\crono.png" />
     <Content Include="Assets\Images\lapiz.png" />
     <Content Include="Assets\Images\ukflag.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -160,10 +167,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="ChatNervion_Windows_CS\ChatRoom.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ChatNervion_Windows_CS\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

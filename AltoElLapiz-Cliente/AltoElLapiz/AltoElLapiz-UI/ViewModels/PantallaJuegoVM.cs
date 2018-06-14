@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AltoElLapiz_Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,18 @@ namespace AltoElLapiz_UI.ViewModels
     {
         private DelegateCommand _altoCommand;
         private DispatcherTimer _timer;
+        private clsGrupo _partida;
         public PantallaJuegoVM()
         {
             _timer = new DispatcherTimer();
             _timer.Tick += dispatcherTimer_Tick;
             _timer.Interval = new TimeSpan(0, 0, 59);
             _timer.Start();
+        }
+
+        public clsGrupo partida{
+            get{ return _partida; }
+            set { _partida = value; }
         }
 
         public DelegateCommand altoCommand

@@ -7,22 +7,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="#2B9CF5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <TextBlock x:Uid="TextBlockJugadores" Grid.Row="0" TextAlignment="Center" Foreground="White" FontSize="70" Margin="0 10 0 0"></TextBlock>
+    <RelativePanel Background="#2B9CF5">
+
+
+        <TextBlock x:Uid="TextBlockJugadores" RelativePanel.Above="contenedorListView" TextAlignment="Center" Foreground="White" FontSize="70" Margin="290 0 0 20" ></TextBlock>
         
         <!--Lista de jugadores-->
-        <Rectangle Grid.Row="1" RadiusX="20" RadiusY="20" Width="500" Height="450" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 25 0 0" Fill="AntiqueWhite"></Rectangle>
+        <Rectangle x:Name="contenedorListView" RadiusX="20" RadiusY="20" Width="500" Height="450" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="200 0 200 0" Fill="AntiqueWhite"></Rectangle>
 
-        <ListView x:Name="listViewPartidas" ItemsSource="{Binding listadoUsuariosPartida}" Grid.Row="1" Width="500" Height="450">
+        <ListView x:Name="listViewPartidas" ItemsSource="{Binding listadoUsuariosPartida}" Width="500" Height="450" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="200 0 0 0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <RelativePanel>
@@ -33,14 +26,14 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <TextBlock x:Uid="ListaJugadoresTextoEspera" Opacity="{Binding opacidadTextoEspera}" HorizontalAlignment="Center" Grid.Row="2" FontSize="15" Margin="0 0 0 20" Height="90" Width="350" Foreground="White" FontWeight="ExtraBold"></TextBlock>
-        <Button x:Uid="ButtonJugar" Opacity="{Binding opacidadBtnJugar}" Background="White" HorizontalAlignment="Center" Grid.Row="2" FontSize="50" Margin="0 0 0 20" Height="90" Width="350" Command="{Binding jugar}"></Button>
+        <TextBlock x:Uid="ListaJugadoresTextoEspera" Opacity="{Binding opacidadTextoEspera}" RelativePanel.Below="contenedorListView" FontSize="15" Margin="290 20 0 0" Height="90" Width="350" Foreground="White" FontWeight="ExtraBold"></TextBlock>
+        <Button x:Uid="ButtonJugar" Opacity="{Binding opacidadBtnJugar}" Background="White"  RelativePanel.Below="contenedorListView" FontSize="50" Margin="290 20 0 0" Height="90" Width="350" Command="{Binding jugar}"></Button>
 
        
         <!--Contenedor Chat-->
-        <Frame x:Name="contenedorChat" Grid.Column="1" Grid.RowSpan="3" MaxWidth="400">
+        <Frame x:Name="contenedorChat" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="contenedorListView" Margin="0, 0, 0, 0" >
 
         </Frame>
 
-    </Grid>
+    </RelativePanel>
 </Page>

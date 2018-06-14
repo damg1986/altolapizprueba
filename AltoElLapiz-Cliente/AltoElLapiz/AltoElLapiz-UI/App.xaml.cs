@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using Microsoft.AspNet.SignalR.Client;
 using AltoElLapiz_UI.ViewModels;
 using System.Collections.ObjectModel;
+using AltoElLapiz_UI.ChatNervion_Windows_CS.ViewModels;
 
 namespace AltoElLapiz_UI
 {
@@ -27,29 +28,20 @@ namespace AltoElLapiz_UI
     /// </summary>
     sealed partial class App : Application
     {
-
+        public static ChatVM chatVM { get; set; } = new ChatVM();
         public static UnirseVM unirseVM { get; set; } = new UnirseVM();
         public static CrearPartidaVM crearPartidaVM { get; set; } = new CrearPartidaVM();
-
         public static ListaJugadoresVM listaJugadoresVM { get; set; } = new ListaJugadoresVM();
+        public static PantallaJuegoVM pantallaJuegoVM { get; set; } = new PantallaJuegoVM();
 
-        public HubConnection conn { get; set; }
-        public IHubProxy proxy { get; set; }
-      
 
         private void SignalR()
         {
             crearPartidaVM.SignalRCrearPartida();
             unirseVM.SignalRUnirse();
             listaJugadoresVM.SignalRListaJugadoresEspera();
-
-            //Connect to the url
-            conn = new HubConnection("http://altolapizservice.azurewebsites.net");
-            //ChatHub is the hub name defined in the host program.
-            proxy = conn.CreateHubProxy("ChatHub");
-
-            conn.Start();
-
+            chatVM.SignalRChat();
+            
         }
 
 

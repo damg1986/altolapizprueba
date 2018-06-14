@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AltoElLapiz_UI;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace AltoElLapizUI
         public PantallaJuego()
         {
             this.InitializeComponent();
+            this.DataContext = App.pantallaJuegoVM;
         }
     }
 }

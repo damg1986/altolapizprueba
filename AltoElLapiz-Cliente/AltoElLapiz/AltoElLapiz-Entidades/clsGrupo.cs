@@ -13,7 +13,6 @@ namespace AltoElLapiz_Entidades
         public int numeroParticipantes { get; set; }
         public bool estadoAbierto { get; set; }
         public ObservableCollection<clsUsuario> listadoDeUsuario { get; set; }
-
         public ObservableCollection<clsCategoria> listadoDeCategorias { get; set; }
 
         //Constructor por parametros

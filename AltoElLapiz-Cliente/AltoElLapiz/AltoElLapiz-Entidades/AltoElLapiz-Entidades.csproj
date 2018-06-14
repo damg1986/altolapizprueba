@@ -106,14 +106,12 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="chatMessage.cs" />
     <Compile Include="clsCategoria.cs" />
     <Compile Include="clsGrupo.cs" />
     <Compile Include="clsMensajeChat.cs" />
     <Compile Include="clsPalabra.cs" />
     <Compile Include="clsPartida.cs" />
     <Compile Include="clsUsuario.cs" />
-    <Compile Include="Group.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\AltoElLapiz_Entidades.rd.xml" />
   </ItemGroup>

@@ -225,11 +225,18 @@ namespace AltoElLapiz_UI.ViewModels
             //unirJugadorAPartida();
             BroadcastListaUsuarios(usuario);
 
-            App.listaJugadoresVM.nombrePartida = partidaSeleccionada.nombrePartida;
+            App.listaJugadoresVM.partida = partidaSeleccionada;
 
             if (App.listaJugadoresVM.listadoUsuariosPartida.Count <= 6)
             {
                 App.listaJugadoresVM.usuario = usuario;
+
+
+                App.chatVM.mensaje.nombreGrupo = partidaSeleccionada.nombrePartida;
+                App.chatVM.mensaje.nick = usuario.nick;
+                App.chatVM.Conectar();
+                App.chatVM.Messages.Clear();
+
                 Frame frameActual = (Frame)Window.Current.Content;
                 frameActual.Navigate(typeof(AltoElLapizUI.ListaJugadores));
 
@@ -268,9 +275,10 @@ namespace AltoElLapiz_UI.ViewModels
 
         public void BroadcastRellenarPartidasDeInicio()
         {
-
-            proxyPartidaUnirse1.Invoke("EnviarListadoCompleto");
-        
+            if (conn.State == ConnectionState.Connected)
+            {
+                proxyPartidaUnirse1.Invoke("EnviarListadoCompleto");
+            }
         }
 
         /// <summary>
@@ -291,16 +299,13 @@ namespace AltoElLapiz_UI.ViewModels
         /// <param name="nuevaPartida"></param>
         public void BroadcastListaUsuarios(clsUsuario usuario)
         {
+            if (conn.State == ConnectionState.Connected)
+            {
+                proxyPartidaUnirse2.Invoke("agregarUsuario", partidaSeleccionada.nombrePartida, usuario);
 
-            proxyPartidaUnirse2.Invoke("agregarUsuario", partidaSeleccionada.nombrePartida, usuario);
+            }
         }
 
-        /// <summary>
-        /// metodo que hace el join del usuario al grupo del servidor
-        /// </summary>
-        //public void unirJugadorAPartida() {
-        //    proxyPartida2.Invoke("JoinGroup", partidaSeleccionada.nombrePartida, usuario);
-        //}
 
         /// <summary>
         /// Aqui llamamos al añadir el nombre del usuario al observable del VM
@@ -320,8 +325,10 @@ namespace AltoElLapiz_UI.ViewModels
         /// </summary>
         public void CerrarPartida()
         {
-            proxyPartidaUnirse3.Invoke("QuitarPartida", partidaSeleccionada.nombrePartida);
-
+            if (conn.State == ConnectionState.Connected)
+            {
+                proxyPartidaUnirse3.Invoke("QuitarPartida", partidaSeleccionada.nombrePartida);
+            }
         }
 
         private async void OnEliminaPartida(String nombrePartida)
