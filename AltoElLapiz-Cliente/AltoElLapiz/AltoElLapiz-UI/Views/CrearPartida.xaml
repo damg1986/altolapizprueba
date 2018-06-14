@@ -9,17 +9,17 @@
 
    
     <RelativePanel Background="#2B9CF5">
-        <TextBlock x:Name="textoCrear" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Uid="TextBlockCrearPartida"  TextAlignment="Center" Foreground="White" FontSize="70" Margin="0 0 0 0"></TextBlock>
+        <TextBlock x:Name="textoCrear" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Uid="TextBlockCrearPartida"  TextAlignment="Center" Foreground="White" FontSize="60" Margin="0 0 0 0"></TextBlock>
 
-        <TextBlock x:Name="textNombrePartida" x:Uid="TextBlockNombrePartida"  RelativePanel.AlignLeftWithPanel="True" Foreground="White" FontSize="30" Margin="250 110 0 0">game name:</TextBlock>
-        <TextBox x:Name="boxNombrePartida" Height="40" Width="300" Margin="10 110 0 0" RelativePanel.RightOf="textNombrePartida" RelativePanel.AlignTopWith="textNombrePartida" Text="{Binding nombrePartida, Mode=TwoWay}"></TextBox>
+        <TextBlock x:Name="textNombrePartida" x:Uid="TextBlockNombrePartida"  RelativePanel.AlignLeftWithPanel="True" Foreground="White" FontSize="30" RelativePanel.Below="textoCrear" Margin="250 15 0 0"></TextBlock>
+        <TextBox x:Name="boxNombrePartida" Height="40" Width="300" Margin="10 15 0 0" RelativePanel.Below="textoCrear" RelativePanel.RightOf="textNombrePartida" RelativePanel.AlignTopWith="textNombrePartida" Text="{Binding nombrePartida, Mode=TwoWay}"></TextBox>
 
         <!--Grid con las categorias-->
-        <Rectangle x:Name="rectangulo" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textoCrear"  RadiusX="20" RadiusY="20" Width="800" Height="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 90 0 0" Fill="AntiqueWhite"></Rectangle>
-        <TextBlock x:Uid="TextBlockCategorias" RelativePanel.AlignTopWith="rectangulo" RelativePanel.AlignHorizontalCenterWith="rectangulo" TextAlignment="Center" FontSize="30" Margin="0 100 0 0"></TextBlock>
+        <Rectangle x:Name="rectangulo" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textNombrePartida"  RadiusX="20" RadiusY="20" Width="800" Height="350" HorizontalAlignment="Center"  Margin="0 30 0 0" Fill="AntiqueWhite"></Rectangle>
+        <TextBlock x:Uid="TextBlockCategorias" RelativePanel.AlignTopWith="rectangulo" RelativePanel.AlignHorizontalCenterWith="rectangulo" TextAlignment="Center" FontSize="30" Margin="0 30 0 0"></TextBlock>
 
         <!--Grid con las categorias a elegir (voy a poner 16)-->
-        <Grid HorizontalAlignment="Center" Width="800" Height="300" Margin="0 160 0 0" RelativePanel.AlignTopWith="rectangulo" RelativePanel.AlignRightWith="rectangulo">
+        <Grid HorizontalAlignment="Center" Width="800" Height="300" Margin="0 80 0 0"  RelativePanel.AlignTopWith="rectangulo" RelativePanel.AlignRightWith="rectangulo">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -49,18 +49,18 @@
             <ToggleSwitch x:Name="toggle15" x:Uid="ToggleLibro" Grid.Row="3" Grid.Column="2" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle15, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <ToggleSwitch x:Name="toggle16" x:Uid="ToggleCantante" Grid.Row="3" Grid.Column="3" OffContent="" OnContent="" HorizontalAlignment="Right" VerticalAlignment="Top" IsOn="{Binding toggle16, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
-
-        <TextBlock x:Name="textRondas" x:Uid="TextBlockRondas" Foreground="White" FontSize="30" RelativePanel.Below="rectangulo" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
-        <ComboBox x:Name="boxRondas" Margin="10 5 0 0" RelativePanel.AlignTopWith="textRondas" RelativePanel.RightOf="textRondas" ItemsSource="{Binding rondas}" SelectedItem="{Binding rondasSeleccionadas, Mode=TwoWay}">
+        <TextBlock x:Name="centrado" RelativePanel.Below="rectangulo" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBlock>
+        <TextBlock x:Name="textRondas" Margin="0,10,0,0" RelativePanel.Below="rectangulo" x:Uid="TextBlockRondas" Foreground="White" FontSize="30"  RelativePanel.LeftOf="boxRondas"></TextBlock>
+        <ComboBox x:Name="boxRondas" Margin="10 15 20 0" RelativePanel.Below="rectangulo" RelativePanel.LeftOf="centrado" ItemsSource="{Binding rondas}" SelectedItem="{Binding rondasSeleccionadas, Mode=TwoWay}">
         </ComboBox>
-        <TextBlock x:Name="textIdioma" RelativePanel.AlignRightWith="textRondas" x:Uid="TextBlockIdioma" Foreground="White" FontSize="30" Grid.Column="1" RelativePanel.Below="textRondas"></TextBlock>
-        <ComboBox x:Name="boxIdioma" Margin="10 5 0 0" RelativePanel.RightOf="textIdioma" RelativePanel.AlignTopWith="textIdioma" ItemsSource="{Binding idiomas}" SelectedItem="{Binding idiomaSeleccionado, Mode=TwoWay}"></ComboBox>
+        <TextBlock x:Name="textIdioma" Margin="20 10 0 0" x:Uid="TextBlockIdioma" Foreground="White" FontSize="30" RelativePanel.RightOf="centrado" RelativePanel.Below="rectangulo"></TextBlock>
+        <ComboBox x:Name="boxIdioma" Margin="10 15 0 0" RelativePanel.RightOf="textIdioma" RelativePanel.AlignTopWith="textIdioma" ItemsSource="{Binding idiomas}" SelectedItem="{Binding idiomaSeleccionado, Mode=TwoWay}"></ComboBox>
 
-        <Button x:Uid="ButtonCrear" RelativePanel.Below="boxIdioma" Background="White" HorizontalAlignment="Center" FontSize="30" Margin="0 0 0 20" Height="50" Width="350" Command="{Binding crearPartidaCommand}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" IsEnabled="{Binding botonCrearHabilitado, UpdateSourceTrigger=PropertyChanged}"></Button>
+        <Button x:Uid="ButtonCrear" RelativePanel.Below="boxIdioma" Background="White" HorizontalAlignment="Center" FontSize="30" Margin="0 20 0 0" Height="50" Width="350" Command="{Binding crearPartidaCommand}" RelativePanel.AlignHorizontalCenterWithPanel="True" IsEnabled="{Binding botonCrearHabilitado, UpdateSourceTrigger=PropertyChanged}"></Button>
 
         <TextBlock x:Name="Intocable" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Visibility="{Binding bloqueaFondo}" ></TextBlock>
 
-        <Popup  x:Name="PopupSalaEspera" IsOpen="{Binding visibilidadPopUp, Mode=TwoWay}" VerticalOffset="250"  HorizontalOffset="550">
+        <Popup  x:Name="PopupSalaEspera" IsOpen="{Binding visibilidadPopUp, Mode=TwoWay}" VerticalOffset="250"  HorizontalOffset="450">
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="White"
                 BorderThickness="2" Width="300" Height="200"

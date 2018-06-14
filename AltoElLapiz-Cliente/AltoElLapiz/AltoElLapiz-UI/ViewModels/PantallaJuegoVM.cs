@@ -45,7 +45,7 @@ namespace AltoElLapiz_UI.ViewModels
         private void dispatcherTimer_Tick(object sender, object e)
         {
             //UpdateCommand();
-            AltoCommand();
+            //AltoCommand(); lo comento para q no cambie de vista mientras estamos tocando la vista de partida
         }
     }
 }

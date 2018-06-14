@@ -9,20 +9,22 @@
 
     <RelativePanel Background="#2B9CF5">
         <!--Panel con el cronometro-->
-        <RelativePanel x:Name="panelCrono" Margin="290, 20,0,0">
+        <RelativePanel x:Name="panelCrono" Margin="290,20,0,0">
             <TextBlock x:Name="crono" Text="" Foreground="White" FontSize="45" Margin="20" RelativePanel.AlignRightWithPanel="True">00:00:00</TextBlock>
             <Image Source="../Assets/Images/crono.png" Height="60" RelativePanel.LeftOf="crono" RelativePanel.AlignVerticalCenterWith="crono"></Image>
         </RelativePanel>
 
-        <TextBlock x:Name="letra" Margin="0, 300, 0, 0" RelativePanel.Below="panelCrono" RelativePanel.Above="btnAlto" RelativePanel.LeftOf="contenedorChat" FontSize="90" Text="A" Foreground="Black"></TextBlock>
+        <TextBlock x:Name="txtletra" Margin="0,80,0,0" RelativePanel.Below="panelCrono" RelativePanel.RightOf="panelCrono" FontSize="90" Text="Letra:" Foreground="Black"></TextBlock>
+        <TextBlock x:Name="letra" Margin="90,20,0,0" RelativePanel.Below="txtletra" RelativePanel.RightOf="panelCrono" FontSize="90" Text="A" Foreground="Black"></TextBlock>
         
         <RelativePanel x:Name="panelCategoriasRespuestas" RelativePanel.Below="panelCrono" RelativePanel.Above="btnAlto" Margin="20">
             <ListView x:Name="listViewCategorias" ItemsSource="{Binding partida.listadoDeCategorias}" Width="500" Height="450" RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0 0 0 0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <RelativePanel>
+                        <RelativePanel >
                             <TextBlock x:Name="categoria" Text="{Binding nombreCategoria}" Foreground="Black"></TextBlock>
-                            <TextBox x:Name="respuesta" Text="{Binding}"></TextBox>
+                            <TextBlock x:Name="dosPuntos" RelativePanel.RightOf="categoria" Text=":" Foreground="Black"></TextBlock>
+                            <TextBox x:Name="respuesta" Text="{Binding usuario.arrayPalabrasESTOHAYQUEMIRARLO, Mode=TwoWay}" Margin="160,0,0,0" Width="300"></TextBox>
                         </RelativePanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -34,7 +36,7 @@
         <Button x:Uid="ButtonAlto" x:Name="btnAlto" Command="{Binding altoCommand}" RelativePanel.AlignBottomWithPanel="True" Background="White"  FontSize="50" Margin="200 0 0 20" Height="90" Width="350"></Button>
 
         <!--Contenedor Chat-->
-        <Frame x:Name="contenedorChat" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="panelCrono" Margin="400, 0, 0, 0" >
+        <Frame x:Name="contenedorChat" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.RightOf="panelCrono" Margin="320, 0, 0, 0" >
 
         </Frame>
 

@@ -1,4 +1,5 @@
 ﻿using AltoElLapiz_UI;
+using ChatNervion;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,11 @@ namespace AltoElLapizUI
         {
             this.InitializeComponent();
             this.DataContext = App.pantallaJuegoVM;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            contenedorChat.Navigate(typeof(ChatRoom));
         }
     }
 }
